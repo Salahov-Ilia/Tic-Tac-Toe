@@ -26,6 +26,7 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Timer3: TTimer;
     procedure FormDestroy(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -33,6 +34,9 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure Timer2Timer(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Timer3Timer(Sender: TObject);
+    procedure N2Click(Sender: TObject);
+    procedure N8Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,6 +51,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses Settings;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -65,9 +71,20 @@ begin
 
 end;
 
+procedure TForm1.N2Click(Sender: TObject);
+begin
+GameEngine.Destroy;
+GameEngine:=TGameEngine.Create;
+end;
+
 procedure TForm1.N3Click(Sender: TObject);
 begin
 Close;
+end;
+
+procedure TForm1.N8Click(Sender: TObject);
+begin
+Form3.show;
 end;
 
 procedure TForm1.Timer1Timer(Sender: TObject);
@@ -86,6 +103,12 @@ if Label5.Caption<>'00' then
    form2.show;
 
 
+end;
+
+procedure TForm1.Timer3Timer(Sender: TObject);
+begin
+GameEngine.EnimyClick;
+timer3.Enabled:=false;
 end;
 
 end.

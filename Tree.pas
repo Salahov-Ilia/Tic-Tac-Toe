@@ -281,12 +281,33 @@ var
 
 
 function TTree.SearchState(Root:pNode; Data: TData):TData;
+
+//------------------------------------------------------------------------------
+  function Compare(Data1:TData; Data2:TData):boolean;
+  var J, k, n: Integer;
+  begin
+     n:=0;
+     result:=false;
+
+      for J := 0 to 2 do
+        for k := 0 to 2 do
+        if data1[j,k]=data2[j,k] then
+           n:=n+1;
+
+           if n=9 then
+              result:=true;
+  end;
+//------------------------------------------------------------------------------
 var
   I: Integer;
+
 begin
-
-
-
+  for I := 0 to Root^.CountChild-1 do
+      if Compare(Data,Root^.Links[i]^.Data) then
+      begin
+         result:=Root^.Links[i]^.Links[0]^.Data;
+         break;
+      end;
 
 end;
 

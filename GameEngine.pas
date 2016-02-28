@@ -12,6 +12,7 @@ type
   public
     procedure Draw(Canvas:TCanvas);
     procedure PlayerClick(X, Y:integer);
+    procedure EnimyClick;
     constructor Create;
     destructor Destroy;
 end;
@@ -47,6 +48,8 @@ procedure TGameEngine.Draw(Canvas: TCanvas);
 var
    i,j:integer;
 begin
+Canvas.Pen.Width:=3;
+
     for I := 0 to 2 do
         for j := 0 to 2 do
       if InitialState[i,j]=0 then
@@ -73,13 +76,18 @@ begin
          Canvas.LineTo(288, 192);
 end;
 
+procedure TGameEngine.EnimyClick;
+begin
+    InitialState:=Tree.SearchState(Tree.Root, InitialState);
+end;
+
 procedure TGameEngine.PlayerClick(X, Y: integer);
 begin
      if InitialState[X div 96, Y div 96]=0 then
      begin
         InitialState[X div 96, Y div 96]:=1;
         form1.Label5.Caption:='59';
-       // InitialState:=Tree.SearchState(Tree.Root, InitialState);
+        form1.Timer3.Enabled:=true;
      end;
 end;
 

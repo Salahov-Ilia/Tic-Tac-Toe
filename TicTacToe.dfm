@@ -92,9 +92,11 @@ object Form1: TForm1
       Caption = #1048#1075#1088#1072
       object N2: TMenuItem
         Caption = #1053#1086#1074#1072#1103
+        OnClick = N2Click
       end
       object N8: TMenuItem
         Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+        OnClick = N8Click
       end
       object N3: TMenuItem
         Caption = #1047#1072#1082#1088#1099#1090#1100
@@ -121,6 +123,11 @@ object Form1: TForm1
   end
   object Timer2: TTimer
     OnTimer = Timer2Timer
-    Left = 88
+    Left = 80
+  end
+  object Timer3: TTimer
+    Enabled = False
+    OnTimer = Timer3Timer
+    Left = 120
   end
 end
