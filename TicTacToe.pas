@@ -14,7 +14,6 @@ type
     N1: TMenuItem;
     N2: TMenuItem;
     N3: TMenuItem;
-    N4: TMenuItem;
     N5: TMenuItem;
     N6: TMenuItem;
     N7: TMenuItem;
@@ -27,6 +26,8 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Timer3: TTimer;
+    Label6: TLabel;
+    Label7: TLabel;
     procedure FormDestroy(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -42,6 +43,8 @@ type
   public
     { Public declarations }
      GameEngine:TGameEngine;
+     NamePl:string;
+     Color_set:TColor;
   end;
 
 
@@ -55,8 +58,17 @@ implementation
 uses Settings;
 
 procedure TForm1.FormCreate(Sender: TObject);
+var
+   g:TextFile;
 begin
     GameEngine:=TGameEngine.Create;
+    assignFile(g,'resource/settings.txt');
+    reset(g);
+    readln(g, NamePl);
+    readln(g,Color_set);
+    closefile(g);
+    form1.Color:=Color_Set;
+    label2.Caption:=NamePl;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -67,8 +79,11 @@ end;
 procedure TForm1.Image1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-   GameEngine.PlayerClick(X, Y);
-
+  if timer3.Enabled=false then
+   begin
+     GameEngine.PlayerClick(X, Y);
+     label2.Caption:='Компьютер';
+   end;
 end;
 
 procedure TForm1.N2Click(Sender: TObject);
@@ -97,7 +112,7 @@ procedure TForm1.Timer2Timer(Sender: TObject);
 var
   I: Integer;
 begin
-if Label5.Caption<>'00' then
+if Label5.Caption<>'0' then
    label5.Caption:=inttostr(strtoint(Label5.Caption)-1)
                         else
    form2.show;
@@ -108,6 +123,8 @@ end;
 procedure TForm1.Timer3Timer(Sender: TObject);
 begin
 GameEngine.EnimyClick;
+label2.Caption:=NamePl;
+Label5.Caption:='59';
 timer3.Enabled:=false;
 end;
 

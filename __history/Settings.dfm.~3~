@@ -1,0 +1,60 @@
+object Form3: TForm3
+  Left = 0
+  Top = 0
+  Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
+  ClientHeight = 331
+  ClientWidth = 419
+  Color = clGreen
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 8
+    Top = 8
+    Width = 98
+    Height = 26
+    Caption = #1048#1084#1103' '#1048#1075#1088#1086#1082#1072
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Segoe Print'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 80
+    Width = 90
+    Height = 26
+    Caption = #1062#1074#1077#1090' '#1092#1086#1085#1072
+    Font.Charset = RUSSIAN_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -15
+    Font.Name = 'Segoe Print'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Edit1: TEdit
+    Left = 8
+    Top = 40
+    Width = 145
+    Height = 21
+    TabOrder = 0
+  end
+  object ColorBox1: TColorBox
+    Left = 8
+    Top = 112
+    Width = 145
+    Height = 22
+    DefaultColorColor = clGreen
+    NoneColorColor = clGreen
+    Selected = clGreen
+    TabOrder = 1
+    OnChange = ColorBox1Change
+  end
+end

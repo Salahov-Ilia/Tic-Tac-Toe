@@ -11,6 +11,8 @@ object Form3: TForm3
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -56,5 +58,14 @@ object Form3: TForm3
     Selected = clGreen
     TabOrder = 1
     OnChange = ColorBox1Change
+  end
+  object Button1: TButton
+    Left = 168
+    Top = 288
+    Width = 75
+    Height = 25
+    Caption = #1054#1082
+    TabOrder = 2
+    OnClick = Button1Click
   end
 end

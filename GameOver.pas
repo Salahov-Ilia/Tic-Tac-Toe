@@ -11,6 +11,7 @@ type
     Label2: TLabel;
     Button1: TButton;
     Button2: TButton;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -23,5 +24,12 @@ var
 implementation
 
 {$R *.dfm}
+
+uses TicTacToe;
+
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+Form2.Color:=Form1.Color_set;
+end;
 
 end.

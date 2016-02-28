@@ -128,13 +128,16 @@ begin
                       else
        //если нет, то присваем массиву все клетки(т.к. это корень всего дерева)
        begin
-             SetLength(CoordinatesEmptyField, CountChild); //выделение памяти
+             SetLength(CoordinatesEmptyField, FCountChild); //выделение памяти
              for I := 0 to 2 do
                for j := 0 to 2 do
                 begin
+                  if FData[i,j]=0 then
+                 begin
                   CoordinatesEmptyField[l].X:=i;
                   CoordinatesEmptyField[l].Y:=j;
                   l:=l+1;
+                 end;
                 end;
 
        end;
@@ -176,7 +179,7 @@ end;
  // Реализация класса дерева----------------------------------------------------
 constructor TTree.Create;
 begin
-   //FRoot:=nil;
+   FRoot:=nil;
    new(FRoot);
 end;
 
@@ -302,12 +305,12 @@ var
   I: Integer;
 
 begin
-  for I := 0 to Root^.CountChild-1 do
+  {for I := 0 to Root^.CountChild-1 do
       if Compare(Data,Root^.Links[i]^.Data) then
-      begin
-         result:=Root^.Links[i]^.Links[0]^.Data;
-         break;
-      end;
+      begin }
+         result:=Root^.Links[0]^.Data;
+        // break;
+     // end;
 
 end;
 

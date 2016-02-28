@@ -16,29 +16,24 @@ type
     constructor Create;
     destructor Destroy;
 end;
+var n:integer;
 implementation
   uses TicTacToe;
 { TGameEngine }
 
 constructor TGameEngine.Create;
 begin
-     Tree:=TTree.Create;
-
      nilgraphic:=TBitmap.Create;
      cross:=TBitmap.Create;
      toe:=TBitmap.Create;
-
+     n:=9;
      nilGraphic.LoadFromFile('resource/nil.bmp');
      cross.LoadFromFile('resource/cross.bmp');
      toe.LoadFromFile('resource/toe.bmp');
-
-     Tree.InitializationTree(Tree.Root,InitialState,9,nil);
 end;
 
 destructor TGameEngine.Destroy;
 begin
-   Tree.Destroy;
-
    nilGraphic.Destroy;
    cross.Destroy;
    toe.Destroy;
@@ -77,8 +72,14 @@ Canvas.Pen.Width:=3;
 end;
 
 procedure TGameEngine.EnimyClick;
+
 begin
+
+    Tree:=TTree.Create;
+    Tree.InitializationTree(Tree.Root,InitialState,n,nil);
     InitialState:=Tree.SearchState(Tree.Root, InitialState);
+    Tree.Destroy;
+    n:=n-1;
 end;
 
 procedure TGameEngine.PlayerClick(X, Y: integer);
@@ -88,6 +89,7 @@ begin
         InitialState[X div 96, Y div 96]:=1;
         form1.Label5.Caption:='59';
         form1.Timer3.Enabled:=true;
+        n:=n-1;
      end;
 end;
 

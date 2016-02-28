@@ -1,0 +1,38 @@
+unit Settings;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, TicTacToe, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TForm3 = class(TForm)
+    Edit1: TEdit;
+    Label1: TLabel;
+    ColorBox1: TColorBox;
+    Label2: TLabel;
+    procedure ColorBox1Change(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+uses GameOver;
+
+procedure TForm3.ColorBox1Change(Sender: TObject);
+begin
+   form1.Color:=ColorBox1.Selected;
+   form2.color:=ColorBox1.Selected;
+   form3.Color:=ColorBox1.Selected;
+end;
+
+end.

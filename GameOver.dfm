@@ -1,6 +1,6 @@
 object Form2: TForm2
-  Left = 0
-  Top = 0
+  Left = 496
+  Top = 299
   ClientHeight = 206
   ClientWidth = 477
   Color = clGreen
@@ -10,6 +10,8 @@ object Form2: TForm2
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel
