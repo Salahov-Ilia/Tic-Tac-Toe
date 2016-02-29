@@ -16,6 +16,7 @@ uses System.SysUtils, System.Variants, System.Classes, Wintypes;
       FParent:pNode; //Родитель
       FVertKey:integer; //Ключ по вертикали
       FHorzKey:integer; //Ключ по горизонтали
+      FKey:integer;
       FCountChild:integer;    //Кол-во потомков
       FLinks:array of pNode; //Поле  указателей на потомков на потомков
       CoordinatesEmptyField:TField; //массив свободных полей
@@ -32,12 +33,13 @@ uses System.SysUtils, System.Variants, System.Classes, Wintypes;
     // Свойства
       property Parent:pNode read FParent write FParent;
       property Data :TData read GetData write SetData;
+      property Key:integer read FKey write FKey;
       property CountChild:integer read FCountChild write FCountChild;
       property Links[index:integer]:pNode read GetLinks write SetLinks;
       property VertKey:integer read FVertKey write FVertKey;
       property HorzKey:integer read FHorzKey write FHorzKey;
 
-      function KeyWin:byte;
+
     // Конструкторы
       constructor Create();overload;// Пустой конструктор
       constructor Create(Data:TData);overload;// Инициализатор данных
@@ -52,7 +54,7 @@ uses System.SysUtils, System.Variants, System.Classes, Wintypes;
       // Поля
        FRoot:pNode;// Корень дерева
 
-
+      function KeyWin(Node:pNode): Integer;
       public
       property Root:pNode read FRoot write FRoot;
       // Конструктор
@@ -150,9 +152,68 @@ begin
 end;
 
 
-function TNode.KeyWin: byte;
-begin
+function TTree.KeyWin(Node:pNode): Integer;
 
+function vert(data:TData):integer;
+var i, value:integer;
+
+begin
+value:=0;
+for I := 0 to 2 do
+    if ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=2) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=2)) and (Data[i,2]=2) then
+        value:=4
+        else
+    if ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=1)) and (Data[i,2]=1) then
+        begin
+        if value<4 then
+           value:=1;
+        end
+        else
+    if ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=2) and (Data[i,2]=2)) then
+       begin
+        if value<4 then
+           value:=2;
+        end
+        else
+    if value<4 then
+       value:=2;
+
+   result:=value;
+   end;
+   function horz(data:TData):integer;
+var i, value:integer;
+
+begin
+value:=0;
+for I := 0 to 2 do
+    if ((Data[0, i]=2) and (Data[1,i]=2) and (Data[2,i]=0)) or ((Data[0, i]=0) and (Data[1,i]=2) and (Data[2,i]=2)) or ((Data[0,i]=2) and (Data[1,i]=2)) and (Data[2,i]=2) then
+        value:=4
+        else
+    if ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=0)) or ((Data[0, i]=0) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=1)) and (Data[2, i]=1) then
+        begin
+        if value<4 then
+           value:=1;
+        end
+        else
+    if ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=2)) or ((Data[0, i]=2) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=2) and (Data[1, i]=2) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=2) and (Data[2, i]=2)) then
+       begin
+        if value<4 then
+           value:=3;
+        end
+        else
+    if value<4 then
+       value:=2;
+
+   result:=value;
+   end;
+var
+ UpToDown, LeftToRight :integer;
+begin
+UpToDown:=vert(node^.Data);
+LeftToRight:=horz(node^.Data);
+if UpToDown>=LeftToRight then
+result:=UpToDown else
+result:=LeftToRight
 
 end;
 
@@ -264,7 +325,7 @@ var
            Root^.Data:=Generation(Root, cross, toe);
         end;
 
-
+        Root^.Key:=KeyWin(Root);
 
         //Создание потомков
       if Root^.CountChild>0 then
@@ -303,15 +364,24 @@ function TTree.SearchState(Root:pNode; Data: TData):TData;
 //------------------------------------------------------------------------------
 var
   I: Integer;
-
+  value:TData;
+  max:integer;
 begin
-  {for I := 0 to Root^.CountChild-1 do
-      if Compare(Data,Root^.Links[i]^.Data) then
-      begin }
-         result:=Root^.Links[0]^.Data;
-        // break;
-     // end;
+max:=0;
+  for I := 0 to Root^.CountChild-1 do
+      if max<Root^.Links[i]^.Key then
+      begin
+       max:=Root^.Links[i]^.Key;
+        value:=Root^.Links[i]^.Data;
+      end;
 
+      if Root^.Key=1 then
+        begin
+          for I := 0 to Root^.CountChild-1 do
+              if Root^.Links[i]^.Key=3 then
+              value:=Root^.Links[i]^.Data;
+        end;
+   result:=value;
 end;
 
 //------------------------------------------------------------------------------
