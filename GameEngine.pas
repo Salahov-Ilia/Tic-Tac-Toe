@@ -74,7 +74,6 @@ end;
 procedure TGameEngine.EnimyClick;
 
 begin
-
     Tree:=TTree.Create;
     Tree.InitializationTree(Tree.Root,InitialState,n,nil);
     InitialState:=Tree.SearchState(Tree.Root, InitialState);

@@ -12,6 +12,8 @@ type
     Button1: TButton;
     Button2: TButton;
     procedure FormCreate(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -26,6 +28,18 @@ implementation
 {$R *.dfm}
 
 uses TicTacToe;
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+form1.GameEngine.Destroy;
+form1.GameEngine.Create;
+close;
+end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+form1.Close;
+end;
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin

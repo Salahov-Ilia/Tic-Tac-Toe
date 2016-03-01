@@ -115,7 +115,11 @@ begin
 if Label5.Caption<>'0' then
    label5.Caption:=inttostr(strtoint(Label5.Caption)-1)
                         else
-   form2.show;
+   begin
+   form2.Label2.Caption:='Время истекло:(';
+    form2.show;
+   end;
+
 
 
 end;

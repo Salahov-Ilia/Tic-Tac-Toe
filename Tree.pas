@@ -153,68 +153,84 @@ end;
 
 
 function TTree.KeyWin(Node:pNode): Integer;
-
-function vert(data:TData):integer;
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+function VerticalTesting(data:TData):integer;
 var i, value:integer;
 
 begin
-value:=0;
+value:=3;
 for I := 0 to 2 do
-    if ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=2) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=2)) and (Data[i,2]=2) then
+    if ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=2) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=0) and (Data[i,2]=2)) then
+       begin
+         if value>1 then
         value:=4
+       end
         else
-    if ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=1)) and (Data[i,2]=1) then
+    if ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=0) and (Data[i,2]=1))then
         begin
-        if value<4 then
+
            value:=1;
         end
         else
     if ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=2) and (Data[i,2]=2)) then
        begin
-        if value<4 then
-           value:=2;
+         if value>1 then
+           value:=3;
         end
         else
-    if value<4 then
+      if value>1 then
        value:=2;
 
    result:=value;
    end;
-   function horz(data:TData):integer;
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+   function HorizontalTesting(data:TData):integer;
 var i, value:integer;
 
 begin
-value:=0;
+value:=3;
 for I := 0 to 2 do
-    if ((Data[0, i]=2) and (Data[1,i]=2) and (Data[2,i]=0)) or ((Data[0, i]=0) and (Data[1,i]=2) and (Data[2,i]=2)) or ((Data[0,i]=2) and (Data[1,i]=2)) and (Data[2,i]=2) then
+    if ((Data[0, i]=2) and (Data[1,i]=2) and (Data[2,i]=0)) or ((Data[0, i]=0) and (Data[1,i]=2) and (Data[2,i]=2)) or ((Data[0,i]=2) and (Data[1,i]=2) and (Data[2,i]=2)) or ((Data[0, i]=2) and (Data[1, i]=0) and (Data[2, i]=2)) then
+       begin
+        if value>1 then
+
         value:=4
+       end
         else
-    if ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=0)) or ((Data[0, i]=0) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=1)) and (Data[2, i]=1) then
+    if ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=0)) or ((Data[0, i]=0) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=0) and (Data[2, i]=1)) then
         begin
-        if value<4 then
+
            value:=1;
         end
         else
     if ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=2)) or ((Data[0, i]=2) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=2) and (Data[1, i]=2) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=2) and (Data[2, i]=2)) then
        begin
-        if value<4 then
+        if value>1 then
            value:=3;
         end
         else
-    if value<4 then
+    if value>1 then
        value:=2;
 
    result:=value;
    end;
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 var
  UpToDown, LeftToRight :integer;
 begin
-UpToDown:=vert(node^.Data);
-LeftToRight:=horz(node^.Data);
-if UpToDown>=LeftToRight then
-result:=UpToDown else
-result:=LeftToRight
 
+UpToDown:=VerticalTesting(node^.Data);
+LeftToRight:=HorizontalTesting(node^.Data);
+
+if UpToDown>=LeftToRight then
+   result:=UpToDown else
+   result:=LeftToRight;
+
+if UpToDown=1 then
+   result:=UpToDown else
+if LeftToRight=1 then
+   result:=LeftToRight;
 end;
 
 function TNode.GetLinks(index: integer): pNode;
@@ -345,23 +361,6 @@ var
 
 
 function TTree.SearchState(Root:pNode; Data: TData):TData;
-
-//------------------------------------------------------------------------------
-  function Compare(Data1:TData; Data2:TData):boolean;
-  var J, k, n: Integer;
-  begin
-     n:=0;
-     result:=false;
-
-      for J := 0 to 2 do
-        for k := 0 to 2 do
-        if data1[j,k]=data2[j,k] then
-           n:=n+1;
-
-           if n=9 then
-              result:=true;
-  end;
-//------------------------------------------------------------------------------
 var
   I: Integer;
   value:TData;
@@ -378,7 +377,7 @@ max:=0;
       if Root^.Key=1 then
         begin
           for I := 0 to Root^.CountChild-1 do
-              if Root^.Links[i]^.Key=3 then
+              if Root^.Links[i]^.Key=2 then
               value:=Root^.Links[i]^.Data;
         end;
    result:=value;

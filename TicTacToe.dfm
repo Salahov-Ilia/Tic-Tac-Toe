@@ -1,9 +1,11 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = #1050#1088#1077#1089#1090#1080#1082#1080'-'#1053#1086#1083#1080#1082#1080
   ClientHeight = 289
-  ClientWidth = 494
+  ClientWidth = 504
   Color = clGreen
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
