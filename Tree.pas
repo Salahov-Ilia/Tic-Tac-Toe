@@ -160,15 +160,18 @@ var i, value:integer;
 begin
 value:=3;
 for I := 0 to 2 do
-    if ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=2) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=0) and (Data[i,2]=2)) then
+    if ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=2) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=0) and (Data[i,2]=2)) then
        begin
+       if (Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=2) then
+           value:=5 else
          if value>1 then
         value:=4
        end
         else
-    if ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=0) and (Data[i,2]=1))then
+    if ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=0) and (Data[i,2]=1))then
         begin
-
+          if (Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=1) then
+          value:=0 else
            value:=1;
         end
         else
@@ -191,16 +194,19 @@ var i, value:integer;
 begin
 value:=3;
 for I := 0 to 2 do
-    if ((Data[0, i]=2) and (Data[1,i]=2) and (Data[2,i]=0)) or ((Data[0, i]=0) and (Data[1,i]=2) and (Data[2,i]=2)) or ((Data[0,i]=2) and (Data[1,i]=2) and (Data[2,i]=2)) or ((Data[0, i]=2) and (Data[1, i]=0) and (Data[2, i]=2)) then
+    if ((Data[0, i]=2) and (Data[1,i]=2) and (Data[2,i]=0)) or ((Data[0, i]=0) and (Data[1,i]=2) and (Data[2,i]=2)) or ((Data[0, i]=2) and (Data[1, i]=0) and (Data[2, i]=2)) then
        begin
+         if (Data[0,i]=2) and (Data[1,i]=2) and (Data[2,i]=2) then
+            value:=5 else
         if value>1 then
 
         value:=4
        end
         else
-    if ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=0)) or ((Data[0, i]=0) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=0) and (Data[2, i]=1)) then
+    if ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=0)) or ((Data[0, i]=0) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=0) and (Data[2, i]=1)) then
         begin
-
+           if (Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=1) then
+              value:=0 else
            value:=1;
         end
         else
@@ -216,21 +222,97 @@ for I := 0 to 2 do
    result:=value;
    end;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+   function DiagonalTesting_1(Data:TData):integer;
+   var value :integer;
+   begin
+      if ((Data[0, 0]=2) and (Data[1,1]=2) and (Data[2,2]=0)) or ((Data[0, 0]=0) and (Data[1,1]=2) and (Data[2,2]=2)) or ((Data[0, 0]=2) and (Data[1, 1]=0) and (Data[2, 2]=2)) then
+       begin
+       if (Data[0,0]=2) and (Data[1,1]=2) and (Data[2,2]=2) then
+          value:=5 else
+        if value>1 then
+
+        value:=4
+       end
+        else
+    if ((Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=0)) or ((Data[0, 0]=0) and (Data[1, 1]=1) and (Data[2, 2]=1)) or ((Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=1)) or ((Data[0, 0]=1) and (Data[1, 1]=0) and (Data[2, 2]=1)) then
+        begin
+
+           value:=1;
+        end
+        else
+    if ((Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=2)) or ((Data[0, 0]=2) and (Data[1, 1]=1) and (Data[2, 2]=1)) or ((Data[0, 0]=2) and (Data[1, 1]=2) and (Data[2, 2]=1)) or ((Data[0, 0]=1) and (Data[1, 1]=2) and (Data[2, 2]=2)) then
+       begin
+        if value>1 then
+           value:=3;
+        end
+        else
+    if value>1 then
+       value:=2;
+
+   result:=value;
+   end;
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+function DiagonalTesting_2(Data:TData):integer;
+
+var value :integer;
+   begin
+      if ((Data[2, 0]=2) and (Data[1,1]=2) and (Data[0,2]=0)) or ((Data[2, 0]=0) and (Data[1,1]=2) and (Data[0,2]=2)) or ((Data[2, 0]=2) and (Data[1, 1]=0) and (Data[0, 2]=2)) then
+       begin
+       if (Data[2,0]=2) and (Data[1,1]=2) and (Data[0,2]=2) then
+           value:=5 else
+        if value>1 then
+
+        value:=4
+       end
+        else
+    if ((Data[2, 0]=1) and (Data[1, 1]=1) and (Data[0, 2]=0)) or ((Data[2, 0]=0) and (Data[1, 1]=1) and (Data[0, 2]=1)) or ((Data[2, 0]=1) and (Data[1, 1]=0) and (Data[0, 2]=1)) then
+        begin
+           if (Data[2, 0]=1) and (Data[1, 1]=1) and (Data[0, 2]=1) then
+              value:=0 else
+           value:=1;
+        end
+        else
+    if ((Data[2, 0]=1) and (Data[1, 1]=1) and (Data[0, 2]=2)) or ((Data[2, 0]=2) and (Data[1, 1]=1) and (Data[0, 2]=1)) or ((Data[2, 0]=2) and (Data[1, 1]=2) and (Data[0, 2]=1)) or ((Data[2, 0]=1) and (Data[1, 1]=2) and (Data[0, 2]=2)) then
+       begin
+        if value>1 then
+           value:=3;
+        end
+        else
+    if value>1 then
+       value:=2;
+
+   result:=value;
+   end;
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
 var
- UpToDown, LeftToRight :integer;
+ UpToDown, LeftToRight, diagonal1,diagonal2 :integer;
 begin
 
 UpToDown:=VerticalTesting(node^.Data);
 LeftToRight:=HorizontalTesting(node^.Data);
+diagonal1:=DiagonalTesting_1(node^.Data);
+diagonal2:=DiagonalTesting_2(node^.Data);
 
-if UpToDown>=LeftToRight then
+if (UpToDown>=LeftToRight) and (((UpToDown>=diagonal1) and (diagonal1>=diagonal2)) or ((UpToDown>=diagonal2) and (diagonal1<=diagonal2))) then
    result:=UpToDown else
-   result:=LeftToRight;
 
-if UpToDown=1 then
+   if (UpToDown<=LeftToRight) and (((LeftToRight>=diagonal1) and (diagonal1>=diagonal2)) or ((UpToDown>=diagonal2) and (diagonal1<=diagonal2)))then
+   result:=LeftToRight else
+
+   if (diagonal1>=diagonal2) and (((diagonal1>=uptodown) and (uptodown>=lefttoright)) or ((diagonal1>=lefttoright) and (uptodown<=lefttoright))) then
+       result:=diagonal1;
+
+
+if (UpToDown=1) and (LeftToRight<>5) and (diagonal1<>5) and (diagonal2<>5) then
    result:=UpToDown else
-if LeftToRight=1 then
-   result:=LeftToRight;
+if (UpToDown<>5) and (LeftToRight=1) and (diagonal1<>5) and (diagonal2<>5) then
+   result:=LeftToRight else
+if (UpToDown<>5) and (LeftToRight<>5) and (diagonal1=1) and (diagonal2<>5) then
+   result:=diagonal1 else
+if diagonal2=1 then
+   result:=diagonal2;
 end;
 
 function TNode.GetLinks(index: integer): pNode;
@@ -378,7 +460,10 @@ max:=0;
         begin
           for I := 0 to Root^.CountChild-1 do
               if Root^.Links[i]^.Key=2 then
-              value:=Root^.Links[i]^.Data;
+                 value:=Root^.Links[i]^.Data;
+          for I := 0 to Root^.CountChild-1 do
+              if Root^.Links[i]^.Key=5 then
+                 value:=Root^.Links[i]^.Data
         end;
    result:=value;
 end;

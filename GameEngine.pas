@@ -28,7 +28,10 @@ begin
      toe:=TBitmap.Create;
      n:=9;
      nilGraphic.LoadFromFile('resource/nil.bmp');
+     //nilGraphic.TransparentColor:=clwhite;
      cross.LoadFromFile('resource/cross.bmp');
+     cross.TransparentColor:=clwhite;
+     cross.Transparent:=true;
      toe.LoadFromFile('resource/toe.bmp');
 end;
 

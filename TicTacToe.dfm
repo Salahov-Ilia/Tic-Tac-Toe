@@ -7,6 +7,7 @@ object Form1: TForm1
   ClientHeight = 289
   ClientWidth = 504
   Color = clGreen
+  DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -24,6 +25,7 @@ object Form1: TForm1
     Top = 0
     Width = 288
     Height = 288
+    Transparent = True
     OnMouseDown = Image1MouseDown
   end
   object Label1: TLabel
@@ -114,6 +116,12 @@ object Form1: TForm1
     Font.Name = 'Segoe Print'
     Font.Style = []
     ParentFont = False
+  end
+  object Bevel1: TBevel
+    Left = 288
+    Top = 0
+    Width = 3
+    Height = 288
   end
   object MainMenu1: TMainMenu
     object N1: TMenuItem

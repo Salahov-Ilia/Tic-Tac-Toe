@@ -28,6 +28,7 @@ type
     Timer3: TTimer;
     Label6: TLabel;
     Label7: TLabel;
+    Bevel1: TBevel;
     procedure FormDestroy(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
