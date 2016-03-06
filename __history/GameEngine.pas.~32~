@@ -23,23 +23,20 @@ implementation
 
 constructor TGameEngine.Create;
 begin
-    // ee:=TTree.Create;
-
      nilgraphic:=TBitmap.Create;
      cross:=TBitmap.Create;
      toe:=TBitmap.Create;
      n:=9;
      nilGraphic.LoadFromFile('resource/nil.bmp');
+     //nilGraphic.TransparentColor:=clwhite;
      cross.LoadFromFile('resource/cross.bmp');
+     cross.TransparentColor:=clwhite;
+     cross.Transparent:=true;
      toe.LoadFromFile('resource/toe.bmp');
-
-     //Tree.InitializationTree(Tree.Root,InitialState,9,nil);
 end;
 
 destructor TGameEngine.Destroy;
 begin
-   Tree.Destroy;
-
    nilGraphic.Destroy;
    cross.Destroy;
    toe.Destroy;
@@ -80,13 +77,11 @@ end;
 procedure TGameEngine.EnimyClick;
 
 begin
-if tree=nil then
-
-Tree:=TTree.Create;
+    Tree:=TTree.Create;
     Tree.InitializationTree(Tree.Root,InitialState,n,nil);
-    n:=n-1;
     InitialState:=Tree.SearchState(Tree.Root, InitialState);
     Tree.Destroy;
+    n:=n-1;
 end;
 
 procedure TGameEngine.PlayerClick(X, Y: integer);

@@ -30,9 +30,10 @@ begin
      nilGraphic.LoadFromFile('resource/nil.bmp');
      //nilGraphic.TransparentColor:=clwhite;
      cross.LoadFromFile('resource/cross.bmp');
-     cross.TransparentColor:=clwhite;
+    // cross.TransparentColor:=clwhite;
      cross.Transparent:=true;
      toe.LoadFromFile('resource/toe.bmp');
+     toe.Transparent:=true;
 end;
 
 destructor TGameEngine.Destroy;

@@ -235,9 +235,10 @@ for I := 0 to 2 do
         value:=4
        end
         else
-    if ((Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=0)) or ((Data[0, 0]=0) and (Data[1, 1]=1) and (Data[2, 2]=1)) or ((Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=1)) or ((Data[0, 0]=1) and (Data[1, 1]=0) and (Data[2, 2]=1)) then
+    if ((Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=0)) or ((Data[0, 0]=0) and (Data[1, 1]=1) and (Data[2, 2]=1)) or ((Data[0, 0]=1) and (Data[1, 1]=0) and (Data[2, 2]=1)) then
         begin
-
+           if (Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=1) then
+             value:=0 else
            value:=1;
         end
         else
@@ -302,17 +303,22 @@ if (UpToDown>=LeftToRight) and (((UpToDown>=diagonal1) and (diagonal1>=diagonal2
    result:=LeftToRight else
 
    if (diagonal1>=diagonal2) and (((diagonal1>=uptodown) and (uptodown>=lefttoright)) or ((diagonal1>=lefttoright) and (uptodown<=lefttoright))) then
-       result:=diagonal1;
+       result:=diagonal1 else
 
+   if (diagonal1<=diagonal2) and (((diagonal2>=uptodown) and (uptodown>=lefttoright)) or ((diagonal2>=lefttoright) and (uptodown<=lefttoright))) then
+       result:=diagonal2;
 
-if (UpToDown=1) and (LeftToRight<>5) and (diagonal1<>5) and (diagonal2<>5) then
+if (UpToDown=1) then
    result:=UpToDown else
-if (UpToDown<>5) and (LeftToRight=1) and (diagonal1<>5) and (diagonal2<>5) then
+if (LeftToRight=1)  then
    result:=LeftToRight else
-if (UpToDown<>5) and (LeftToRight<>5) and (diagonal1=1) and (diagonal2<>5) then
+if (diagonal1=1) then
    result:=diagonal1 else
 if diagonal2=1 then
    result:=diagonal2;
+
+   if (UpToDown=5) or (LeftToright=5) or (diagonal1=5) or (diagonal2=5) then
+      result:=5;
 end;
 
 function TNode.GetLinks(index: integer): pNode;
@@ -449,6 +455,7 @@ var
   max:integer;
 begin
 max:=0;
+
   for I := 0 to Root^.CountChild-1 do
       if max<Root^.Links[i]^.Key then
       begin
@@ -459,9 +466,12 @@ max:=0;
       if Root^.Key=1 then
         begin
           for I := 0 to Root^.CountChild-1 do
-              if Root^.Links[i]^.Key=2 then
-              value:=Root^.Links[i]^.Data;
+              if (Root^.Links[i]^.Key=2) or(Root^.Links[i]^.Key=5)  then
+              if Root^.Links[i]^.Key>max then
+
+                 value:=Root^.Links[i]^.Data;
         end;
+       
    result:=value;
 end;
 
