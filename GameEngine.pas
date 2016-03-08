@@ -8,11 +8,13 @@ type
   private
     Tree:TTree;
     InitialState: TData;
+    FState:integer;
     nilGraphic, cross, toe:TBitmap;
   public
     procedure Draw(Canvas:TCanvas);
     procedure PlayerClick(X, Y:integer);
     procedure EnimyClick;
+    function State:integer;
     constructor Create;
     destructor Destroy;
 end;
@@ -27,6 +29,7 @@ begin
      cross:=TBitmap.Create;
      toe:=TBitmap.Create;
      n:=9;
+     FState:=0;
      nilGraphic.LoadFromFile('resource/nil.bmp');
      //nilGraphic.TransparentColor:=clwhite;
      cross.LoadFromFile('resource/cross.bmp');
@@ -80,6 +83,8 @@ procedure TGameEngine.EnimyClick;
 begin
     Tree:=TTree.Create;
     Tree.InitializationTree(Tree.Root,InitialState,n,nil);
+    if (Tree.Root.Key=5) then
+        FState:=2 else
     InitialState:=Tree.SearchState(Tree.Root, InitialState);
     Tree.Destroy;
     n:=n-1;
@@ -94,6 +99,15 @@ begin
         form1.Timer3.Enabled:=true;
         n:=n-1;
      end;
+      FState:=KeyWin(InitialState);
+
+      if FState<>1 then
+         FState:=0;
+end;
+
+function TGameEngine.State: integer;
+begin
+result:=FState;
 end;
 
 end.

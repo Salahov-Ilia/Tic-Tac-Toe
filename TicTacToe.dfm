@@ -56,9 +56,9 @@ object Form1: TForm1
   object Label3: TLabel
     Left = 294
     Top = 104
-    Width = 150
+    Width = 145
     Height = 28
-    Caption = #1050#1086#1085#1077#1094' '#1080#1075#1088#1099' '#1095#1077#1088#1077#1079':'
+    Caption = #1050#1086#1085#1077#1094' '#1093#1086#1076#1072' '#1095#1077#1088#1077#1079':'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16

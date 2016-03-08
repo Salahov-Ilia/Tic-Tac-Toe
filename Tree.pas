@@ -54,7 +54,7 @@ uses System.SysUtils, System.Variants, System.Classes, Wintypes;
       // Поля
        FRoot:pNode;// Корень дерева
 
-      function KeyWin(Node:pNode): Integer;
+
       public
       property Root:pNode read FRoot write FRoot;
       // Конструктор
@@ -70,7 +70,7 @@ uses System.SysUtils, System.Variants, System.Classes, Wintypes;
         function SearchState(Root:pNode; Data: TData):TData;
 
     end;
-
+   function KeyWin(Data0:TData): Integer;
 implementation
 
 { TNode }
@@ -152,7 +152,7 @@ begin
 end;
 
 
-function TTree.KeyWin(Node:pNode): Integer;
+function KeyWin(Data0:TData): Integer;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
 function VerticalTesting(data:TData):integer;
 var i, value:integer;
@@ -163,14 +163,14 @@ for I := 0 to 2 do
     if ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=2) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=2)) or((Data[i,0]=2) and (Data[i,1]=0) and (Data[i,2]=2)) then
        begin
         if value>1 then
-
-
-        value:=4
+        value:=4;
+        if (Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=2) then
+            value:=5;
        end
         else
     if ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=0) and (Data[i,2]=1))then
         begin
-          if value<>4 then
+          if value<>5 then
 
            value:=1;
         end
@@ -199,12 +199,14 @@ for I := 0 to 2 do
 
         if value>1 then
 
-        value:=4
+        value:=4;
+         if (Data[0,i]=2) and (Data[1,i]=2) and (Data[2,i]=2) then
+            value:=5;
        end
         else
     if ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=0)) or ((Data[0, i]=0) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=0) and (Data[2, i]=1)) then
         begin
-           if value<>4 then
+           if value<>5 then
            value:=1;
         end
         else
@@ -230,12 +232,14 @@ for I := 0 to 2 do
 
          if value>1 then
 
-        value:=4
+        value:=4;
+        if (Data[0,0]=2) and (Data[1,1]=2) and (Data[2,2]=2) then
+            value:=5;
        end
         else
     if ((Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=0)) or ((Data[0, 0]=0) and (Data[1, 1]=1) and (Data[2, 2]=1)) or ((Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=1)) or ((Data[0, 0]=1) and (Data[1, 1]=0) and (Data[2, 2]=1)) then
         begin
-           if value<>4 then
+           if value<>5 then
            value:=1;
         end
         else
@@ -262,12 +266,14 @@ var value :integer;
 
         if value>1 then
 
-        value:=4
+        value:=4;
+        if (Data[2,0]=2) and (Data[1,1]=2) and (Data[0,2]=2) then
+            value:=5;
        end
         else
     if ((Data[2, 0]=1) and (Data[1, 1]=1) and (Data[0, 2]=0)) or ((Data[2, 0]=0) and (Data[1, 1]=1) and (Data[0, 2]=1)) or ((Data[2, 0]=1) and (Data[1, 1]=1) and (Data[0, 2]=1)) or ((Data[2, 0]=1) and (Data[1, 1]=0) and (Data[0, 2]=1)) then
         begin
-          if value<>4 then
+          if value<>5 then
            value:=1;
         end
         else
@@ -287,10 +293,10 @@ var
  UpToDown, LeftToRight, diagonal1,diagonal2 :integer;
 begin
 
-UpToDown:=VerticalTesting(node^.Data);
-LeftToRight:=HorizontalTesting(node^.Data);
-diagonal1:=DiagonalTesting_1(node^.Data);
-diagonal2:=DiagonalTesting_2(node^.Data);
+UpToDown:=VerticalTesting(Data0);
+LeftToRight:=HorizontalTesting(Data0);
+diagonal1:=DiagonalTesting_1(Data0);
+diagonal2:=DiagonalTesting_2(Data0);
 
 if (UpToDown>=LeftToRight) and (((UpToDown>=diagonal1) and (diagonal1>=diagonal2)) or ((UpToDown>=diagonal2) and (diagonal1<=diagonal2))) then
    result:=UpToDown else
@@ -304,17 +310,12 @@ if (UpToDown>=LeftToRight) and (((UpToDown>=diagonal1) and (diagonal1>=diagonal2
    if (diagonal1<=diagonal2) and (((diagonal2>=uptodown) and (uptodown>=lefttoright)) or ((diagonal2>=lefttoright) and (uptodown<=lefttoright))) then
        result:=diagonal2;
 
-if (UpToDown=1) then
-   result:=UpToDown else
-if (LeftToRight=1)  then
-   result:=LeftToRight else
-if (diagonal1=1) then
-   result:=diagonal1 else
-if diagonal2=1 then
-   result:=diagonal2;
 
-   if (UpToDown=4) or (LeftToright=4) or (diagonal1=4) or (diagonal2=4) then
-      result:=4;
+   if (UpToDown=1) or (LeftToRight=1) or (diagonal1=1) or (diagonal2=1) then
+       result:=1;
+
+   if (UpToDown=5) or (LeftToright=5) or (diagonal1=5) or (diagonal2=5) then
+      result:=5;
 end;
 
 function TNode.GetLinks(index: integer): pNode;
@@ -425,10 +426,10 @@ var
            Root^.Data:=Generation(Root, cross, toe);
         end;
 
-        Root^.Key:=KeyWin(Root);
+        Root^.Key:=KeyWin(Root^.Data);
 
         //Создание потомков
-      if Root^.CountChild>0 then
+      if (Root^.CountChild>0) and (Root^.key<>5) then
         begin
              for I := 0 to Root^.CountChild-1 do
                  if Root^.Links[i]=nil then
@@ -462,7 +463,7 @@ max:=0;
       if Root^.Key=1 then
         begin
           for I := 0 to Root^.CountChild-1 do
-              if (Root^.Links[i]^.Key=2) {and (max<>4)} then
+              if (Root^.Links[i]^.Key=2) then
 
                  value:=Root^.Links[i]^.Data;
         end;

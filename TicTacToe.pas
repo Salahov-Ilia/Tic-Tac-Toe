@@ -108,6 +108,22 @@ begin
 
  GameEngine.Draw(Image1.Canvas);
 
+  { if GameEngine.State=2 then
+    begin
+      Timer1.Enabled:=false;
+      timer2.Enabled:=false;
+      form2.Label2.Caption:='Компьютер выйграл:(';
+      form2.Show;
+    end
+       else
+  if GameEngine.State=1 then
+    begin
+      Timer1.Enabled:=false;
+      timer2.Enabled:=false;
+      form2.Label2.Caption:=NamePl+'выйграл:)';
+      form2.Show;
+    end }
+
 end;
 procedure TForm1.Timer2Timer(Sender: TObject);
 var

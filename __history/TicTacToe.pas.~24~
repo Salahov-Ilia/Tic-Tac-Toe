@@ -14,7 +14,6 @@ type
     N1: TMenuItem;
     N2: TMenuItem;
     N3: TMenuItem;
-    N4: TMenuItem;
     N5: TMenuItem;
     N6: TMenuItem;
     N7: TMenuItem;
@@ -28,6 +27,8 @@ type
     Label5: TLabel;
     Timer3: TTimer;
     Label6: TLabel;
+    Label7: TLabel;
+    Bevel1: TBevel;
     procedure FormDestroy(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
@@ -79,8 +80,11 @@ end;
 procedure TForm1.Image1MouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-   GameEngine.PlayerClick(X, Y);
-   label2.Caption:='Компьютер';
+  if timer3.Enabled=false then
+   begin
+     GameEngine.PlayerClick(X, Y);
+     label2.Caption:='Компьютер';
+   end;
 end;
 
 procedure TForm1.N2Click(Sender: TObject);
@@ -112,7 +116,11 @@ begin
 if Label5.Caption<>'0' then
    label5.Caption:=inttostr(strtoint(Label5.Caption)-1)
                         else
-   form2.show;
+   begin
+   form2.Label2.Caption:='Время истекло:(';
+    form2.show;
+   end;
+
 
 
 end;
@@ -121,6 +129,7 @@ procedure TForm1.Timer3Timer(Sender: TObject);
 begin
 GameEngine.EnimyClick;
 label2.Caption:=NamePl;
+Label5.Caption:='59';
 timer3.Enabled:=false;
 end;
 
