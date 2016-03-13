@@ -1,6 +1,7 @@
 object Form3: TForm3
   Left = 0
   Top = 0
+  BorderIcons = [biMinimize, biMaximize]
   Caption = #1053#1072#1089#1090#1088#1086#1081#1082#1080
   ClientHeight = 331
   ClientWidth = 419

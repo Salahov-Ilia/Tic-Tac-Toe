@@ -171,8 +171,9 @@ for I := 0 to 2 do
     if ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=0) and (Data[i,2]=1))then
         begin
           if value<>5 then
-
            value:=1;
+           if (Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=1) then
+              value:=0;
         end
         else
     if ((Data[i,0]=1) and (Data[i,1]=1) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=1) and (Data[i,2]=1)) or ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=1)) or ((Data[i,0]=1) and (Data[i,1]=2) and (Data[i,2]=2)) then
@@ -208,6 +209,8 @@ for I := 0 to 2 do
         begin
            if value<>5 then
            value:=1;
+           if (Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=1) then
+           value:=0;
         end
         else
     if ((Data[0, i]=1) and (Data[1, i]=1) and (Data[2, i]=2)) or ((Data[0, i]=2) and (Data[1, i]=1) and (Data[2, i]=1)) or ((Data[0, i]=2) and (Data[1, i]=2) and (Data[2, i]=1)) or ((Data[0, i]=1) and (Data[1, i]=2) and (Data[2, i]=2)) then
@@ -241,6 +244,8 @@ for I := 0 to 2 do
         begin
            if value<>5 then
            value:=1;
+           if (Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=1) then
+              value:=0;
         end
         else
     if ((Data[0, 0]=1) and (Data[1, 1]=1) and (Data[2, 2]=2)) or ((Data[0, 0]=2) and (Data[1, 1]=1) and (Data[2, 2]=1)) or ((Data[0, 0]=2) and (Data[1, 1]=2) and (Data[2, 2]=1)) or ((Data[0, 0]=1) and (Data[1, 1]=2) and (Data[2, 2]=2)) then
@@ -275,6 +280,8 @@ var value :integer;
         begin
           if value<>5 then
            value:=1;
+           if (Data[2, 0]=1) and (Data[1, 1]=1) and (Data[0, 2]=1) then
+              value:=0;
         end
         else
     if ((Data[2, 0]=1) and (Data[1, 1]=1) and (Data[0, 2]=2)) or ((Data[2, 0]=2) and (Data[1, 1]=1) and (Data[0, 2]=1)) or ((Data[2, 0]=2) and (Data[1, 1]=2) and (Data[0, 2]=1)) or ((Data[2, 0]=1) and (Data[1, 1]=2) and (Data[0, 2]=2)) then
@@ -313,6 +320,9 @@ if (UpToDown>=LeftToRight) and (((UpToDown>=diagonal1) and (diagonal1>=diagonal2
 
    if (UpToDown=1) or (LeftToRight=1) or (diagonal1=1) or (diagonal2=1) then
        result:=1;
+
+   if (UpToDown=0) or (LeftToRight=0) or (diagonal1=0) or (diagonal2=0) then
+       result:=0;
 
    if (UpToDown=5) or (LeftToright=5) or (diagonal1=5) or (diagonal2=5) then
       result:=5;

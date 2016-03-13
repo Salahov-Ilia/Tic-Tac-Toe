@@ -31,8 +31,9 @@ uses TicTacToe;
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
-form1.GameEngine.Destroy;
 form1.GameEngine.Create;
+form1.Timer1.Enabled:=true;
+form1.Timer2.Enabled:=true;
 close;
 end;
 

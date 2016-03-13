@@ -29,7 +29,7 @@ begin
      cross:=TBitmap.Create;
      toe:=TBitmap.Create;
      n:=9;
-     FState:=0;
+     FState:=-1;
      nilGraphic.LoadFromFile('resource/nil.bmp');
      //nilGraphic.TransparentColor:=clwhite;
      cross.LoadFromFile('resource/cross.bmp');
@@ -79,18 +79,21 @@ Canvas.Pen.Width:=3;
 end;
 
 procedure TGameEngine.EnimyClick;
-
+ var key:integer;
 begin
     Tree:=TTree.Create;
     Tree.InitializationTree(Tree.Root,InitialState,n,nil);
-    if (Tree.Root.Key=5) then
-        FState:=2 else
     InitialState:=Tree.SearchState(Tree.Root, InitialState);
     Tree.Destroy;
     n:=n-1;
+    key:=keywin(InitialState);
+
+    if (Key=5) then
+        FState:=1
 end;
 
 procedure TGameEngine.PlayerClick(X, Y: integer);
+var key: integer;
 begin
      if InitialState[X div 96, Y div 96]=0 then
      begin
@@ -99,9 +102,9 @@ begin
         form1.Timer3.Enabled:=true;
         n:=n-1;
      end;
-      FState:=KeyWin(InitialState);
-
-      if FState<>1 then
+     // FState:=
+        key:=keywin(InitialState);
+      if (Key=0) then
          FState:=0;
 end;
 
