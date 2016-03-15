@@ -17,10 +17,11 @@ object Form2: TForm2
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel
-    Left = 182
-    Top = 27
+    Left = 126
+    Top = 35
     Width = 100
     Height = 47
+    Alignment = taCenter
     Caption = #1053#1080#1095#1100#1103':)'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
