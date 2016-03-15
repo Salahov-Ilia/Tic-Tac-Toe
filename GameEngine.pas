@@ -10,6 +10,8 @@ type
     InitialState: TData;
     FState:integer;
     nilGraphic, cross, toe:TBitmap;
+
+
   public
     procedure Draw(Canvas:TCanvas);
     procedure PlayerClick(X, Y:integer);
@@ -24,7 +26,13 @@ implementation
 { TGameEngine }
 
 constructor TGameEngine.Create;
+ var
+   i,j:integer;
 begin
+     for I := 0 to 2 do
+        for j := 0 to 2 do
+     InitialState[i,j]:=0;
+
      nilgraphic:=TBitmap.Create;
      cross:=TBitmap.Create;
      toe:=TBitmap.Create;
@@ -37,6 +45,7 @@ begin
      cross.Transparent:=true;
      toe.LoadFromFile('resource/toe.bmp');
      toe.Transparent:=true;
+
 end;
 
 destructor TGameEngine.Destroy;
@@ -44,6 +53,7 @@ begin
    nilGraphic.Destroy;
    cross.Destroy;
    toe.Destroy;
+
 end;
 
 procedure TGameEngine.Draw(Canvas: TCanvas);
@@ -86,14 +96,13 @@ begin
     InitialState:=Tree.SearchState(Tree.Root, InitialState);
     Tree.Destroy;
     n:=n-1;
-    key:=keywin(InitialState);
 
-    if (Key=5) then
-        FState:=1
+
+
 end;
 
 procedure TGameEngine.PlayerClick(X, Y: integer);
-var key: integer;
+
 begin
      if InitialState[X div 96, Y div 96]=0 then
      begin
@@ -102,14 +111,32 @@ begin
         form1.Timer3.Enabled:=true;
         n:=n-1;
      end;
-     // FState:=
-        key:=keywin(InitialState);
-      if (Key=0) then
-         FState:=0;
+
 end;
 
 function TGameEngine.State: integer;
+var key, p: integer;
+  I: Integer;
+  j: Integer;
 begin
+p:=0;
+key:=keywin(InitialState);
+
+   if (Key=0) then
+         FState:=0 else
+          if (Key=5) then
+        FState:=1;
+
+        for I := 0 to 2 do
+            for j := 0 to 2 do
+                begin
+                  if InitialState[i,j]<>0 then
+                     p:=p+1;
+                end;
+
+                if (p=9) and (FState<>0) and (FState<>1)then
+                   Fstate:=2;
+
 result:=FState;
 end;
 

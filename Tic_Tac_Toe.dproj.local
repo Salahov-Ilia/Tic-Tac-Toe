@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.230,C:\Users\Илья\Desktop\MyTree\MyTree.dfm=C:\Users\Илья\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.230,C:\Users\Илья\Desktop\MyTree\MyTree.pas=C:\Users\Илья\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.742,=C:\Users\Илья\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.996,C:\Users\Илья\Desktop\MyTree\ProjectTree.dproj=C:\Users\Илья\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.140,C:\Users\Илья\Desktop\TicTacToe\Settings.dfm=C:\Users\Илья\Desktop\TicTacToe\Unit3.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.005,C:\Users\Илья\Desktop\MyTree\MyTree.dfm=C:\Users\Илья\Desktop\MyTree\TicTacToe.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.664,C:\Users\Илья\Desktop\MyTree\ProjectTree.dproj=C:\Users\Илья\Desktop\MyTree\Tic_Tac_Toe.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.191,C:\Users\Илья\Desktop\MyTree\GameOver.dfm=C:\Users\Илья\Desktop\MyTree\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.140,C:\Users\Илья\Desktop\TicTacToe\Settings.pas=C:\Users\Илья\Desktop\TicTacToe\Unit3.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.954,=C:\Users\Илья\Desktop\MyTree\Unit1.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.185,C:\Users\Илья\Desktop\MyTree\Unit1.pas=C:\Users\Илья\Desktop\MyTree\GameEngine.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.005,C:\Users\Илья\Desktop\MyTree\MyTree.pas=C:\Users\Илья\Desktop\MyTree\TicTacToe.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.123,=C:\Users\Илья\Desktop\MyTree\Unit2.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.191,C:\Users\Илья\Desktop\MyTree\Unit2.pas=C:\Users\Илья\Desktop\MyTree\GameOver.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.140,C:\Users\Илья\Desktop\TicTacToe\Unit3.dfm=C:\Users\Илья\Desktop\TicTacToe\Settings.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.005,C:\Users\Илья\Desktop\MyTree\TicTacToe.pas=C:\Users\Илья\Desktop\MyTree\MyTree.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.742,=C:\Users\Илья\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.585,=C:\Users\Илья\Documents\RAD Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.005,C:\Users\Илья\Desktop\MyTree\TicTacToe.dfm=C:\Users\Илья\Desktop\MyTree\MyTree.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.664,C:\Users\Илья\Desktop\MyTree\Tic_Tac_Toe.dproj=C:\Users\Илья\Desktop\MyTree\ProjectTree.dproj</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.191,C:\Users\Илья\Desktop\MyTree\Unit2.dfm=C:\Users\Илья\Desktop\MyTree\GameOver.dfm</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.245,C:\Users\Илья\Desktop\MyTree\Tree.pas=C:\Users\Илья\Documents\RAD Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>1899.12.30 00:00:00.000.140,C:\Users\Илья\Desktop\TicTacToe\Unit3.pas=C:\Users\Илья\Desktop\TicTacToe\Settings.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.245,C:\Users\Илья\Documents\RAD Studio\Projects\Unit2.pas=C:\Users\Илья\Desktop\MyTree\Tree.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.996,C:\Users\Илья\Documents\RAD Studio\Projects\Project1.dproj=C:\Users\Илья\Desktop\MyTree\ProjectTree.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.230,C:\Users\Илья\Documents\RAD Studio\Projects\Unit1.dfm=C:\Users\Илья\Desktop\MyTree\MyTree.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.191,C:\Users\Илья\Desktop\MyTree\GameOver.pas=C:\Users\Илья\Desktop\MyTree\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.230,C:\Users\Илья\Documents\RAD Studio\Projects\Unit1.pas=C:\Users\Илья\Desktop\MyTree\MyTree.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.185,C:\Users\Илья\Desktop\MyTree\GameEngine.pas=C:\Users\Илья\Desktop\MyTree\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.280,=C:\Users\Илья\Desktop\TicTacToe\Unit3.pas</Transaction>
   </Transactions>
 </BorlandProject>

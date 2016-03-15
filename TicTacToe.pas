@@ -14,7 +14,6 @@ type
     N1: TMenuItem;
     N2: TMenuItem;
     N3: TMenuItem;
-    N5: TMenuItem;
     N6: TMenuItem;
     N7: TMenuItem;
     Timer1: TTimer;
@@ -39,6 +38,7 @@ type
     procedure Timer3Timer(Sender: TObject);
     procedure N2Click(Sender: TObject);
     procedure N8Click(Sender: TObject);
+    procedure N7Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -98,6 +98,11 @@ begin
 Close;
 end;
 
+procedure TForm1.N7Click(Sender: TObject);
+begin
+showmessage('Создатель игры: Салахов Илья.'+#13+'Игра создана для научно-практической конфиренции школьников.'+#13+'2016г.');
+end;
+
 procedure TForm1.N8Click(Sender: TObject);
 begin
 Form3.show;
@@ -124,7 +129,17 @@ begin
       timer2.Enabled:=false;
       form2.Label2.Caption:=NamePl+' выйграл:)';
       form2.Show;
-    end
+    end else
+
+    if GameEngine.State=2 then
+    begin
+      Timer1.Enabled:=false;
+      timer2.Enabled:=false;
+      form2.Label2.Caption:='Ничья:)';
+      form2.Show;
+    end;
+
+
 
 end;
 procedure TForm1.Timer2Timer(Sender: TObject);

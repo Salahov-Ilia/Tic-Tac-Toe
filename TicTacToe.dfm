@@ -126,7 +126,7 @@ object Form1: TForm1
   end
   object Label3: TLabel
     Left = 294
-    Top = 104
+    Top = 64
     Width = 145
     Height = 28
     Caption = #1050#1086#1085#1077#1094' '#1093#1086#1076#1072' '#1095#1077#1088#1077#1079':'
@@ -139,7 +139,7 @@ object Form1: TForm1
   end
   object Label4: TLabel
     Left = 334
-    Top = 138
+    Top = 98
     Width = 17
     Height = 28
     Caption = '0:'
@@ -152,7 +152,7 @@ object Form1: TForm1
   end
   object Label5: TLabel
     Left = 357
-    Top = 138
+    Top = 98
     Width = 24
     Height = 28
     Caption = '59'
@@ -212,11 +212,9 @@ object Form1: TForm1
     end
     object N6: TMenuItem
       Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077
-      object N5: TMenuItem
-        Caption = #1055#1088#1072#1074#1080#1083#1072' '#1080#1075#1088#1099
-      end
       object N7: TMenuItem
         Caption = #1054' '#1087#1088#1086#1075#1088#1072#1084#1084#1077'...'
+        OnClick = N7Click
       end
     end
   end

@@ -318,11 +318,13 @@ if (UpToDown>=LeftToRight) and (((UpToDown>=diagonal1) and (diagonal1>=diagonal2
        result:=diagonal2;
 
 
-   if (UpToDown=1) or (LeftToRight=1) or (diagonal1=1) or (diagonal2=1) then
-       result:=1;
+
 
    if (UpToDown=0) or (LeftToRight=0) or (diagonal1=0) or (diagonal2=0) then
        result:=0;
+
+   if (UpToDown=1) or (LeftToRight=1) or (diagonal1=1) or (diagonal2=1) then
+       result:=1;
 
    if (UpToDown=5) or (LeftToright=5) or (diagonal1=5) or (diagonal2=5) then
       result:=5;
