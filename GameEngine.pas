@@ -3,6 +3,12 @@ unit GameEngine;
 interface
 uses Tree,  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics;
 
+
+function GetCross:TBitmap;stdcall;external 'source.dll';
+function GetToe:TBitmap;stdcall;external 'source.dll';
+function GetNil:TBitmap;stdcall;external 'source.dll';
+
+
 type
  TGameEngine=class
   private
@@ -20,9 +26,14 @@ type
     constructor Create;
     destructor Destroy;
 end;
+
+
 var n:integer;
 implementation
+
+
   uses TicTacToe;
+
 { TGameEngine }
 
 constructor TGameEngine.Create;
@@ -38,12 +49,13 @@ begin
      toe:=TBitmap.Create;
      n:=9;
      FState:=-1;
-     nilGraphic.LoadFromFile('resource/nil.bmp');
-     //nilGraphic.TransparentColor:=clwhite;
-     cross.LoadFromFile('resource/cross.bmp');
-    // cross.TransparentColor:=clwhite;
+
+     toe:=GetToe;
+     cross:=GetCross;
+     nilGraphic:=GetNil;
+
+     nilGraphic.TransparentColor:=clwhite;
      cross.Transparent:=true;
-     toe.LoadFromFile('resource/toe.bmp');
      toe.Transparent:=true;
 
 end;

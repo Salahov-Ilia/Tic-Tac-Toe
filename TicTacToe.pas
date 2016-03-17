@@ -7,6 +7,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, GameOver,
   Vcl.Menus, GameEngine;
 
+  function GetIco:TIcon;stdcall;external 'source.dll';
+
 type
   TForm1 = class(TForm)
     Image1: TImage;
@@ -63,7 +65,7 @@ var
    g:TextFile;
 begin
     GameEngine:=TGameEngine.Create;
-    assignFile(g,'resource/settings.txt');
+    assignFile(g,'settings.txt');
     reset(g);
     readln(g, NamePl);
     readln(g,Color_set);
@@ -100,7 +102,7 @@ end;
 
 procedure TForm1.N7Click(Sender: TObject);
 begin
-showmessage('Создатель игры: Салахов Илья.'+#13+'Игра создана для научно-практической конфиренции школьников.'+#13+'2016г.');
+showmessage('Создатель игры: Салахов Илья.'+#13+'Игра создана для научно-практической конференции школьников.'+#13+'2016г.');
 end;
 
 procedure TForm1.N8Click(Sender: TObject);

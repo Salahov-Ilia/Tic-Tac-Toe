@@ -14,6 +14,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,6 +47,13 @@ end;
 procedure TForm2.FormCreate(Sender: TObject);
 begin
 Form2.Color:=Form1.Color_set;
+end;
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+if label2.Caption='Ничья:)' then
+   label2.left:=190 else
+   label2.Left:=80;
 end;
 
 end.
