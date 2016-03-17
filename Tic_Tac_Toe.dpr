@@ -6,7 +6,8 @@ uses
   Tree in 'Tree.pas',
   GameOver in 'GameOver.pas' {Form2},
   GameEngine in 'GameEngine.pas',
-  Settings in 'Settings.pas' {Form3};
+  Settings in 'Settings.pas' {Form3},
+  resource in 'resource.pas';
 
 {$R *.res}
 

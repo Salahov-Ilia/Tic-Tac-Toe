@@ -1,0 +1,10 @@
+unit resource;
+
+interface
+uses System.SysUtils, Vcl.Graphics;
+{$R image.res}
+
+
+implementation
+
+end.

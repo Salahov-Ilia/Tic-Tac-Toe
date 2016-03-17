@@ -159,6 +159,8 @@ var i, value:integer;
 
 begin
 value:=3;
+//ѕроверка по вертикали и присваивание соответствующей оценки
+
 for I := 0 to 2 do
     if ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=0)) or ((Data[i,0]=0) and (Data[i,1]=2) and (Data[i,2]=2)) or ((Data[i,0]=2) and (Data[i,1]=2) and (Data[i,2]=2)) or((Data[i,0]=2) and (Data[i,1]=0) and (Data[i,2]=2)) then
        begin
@@ -194,6 +196,8 @@ var i, value:integer;
 
 begin
 value:=3;
+
+//ѕроверка по горизонтали и присваивание соответствующей оценки
 for I := 0 to 2 do
     if ((Data[0, i]=2) and (Data[1,i]=2) and (Data[2,i]=0)) or ((Data[0, i]=0) and (Data[1,i]=2) and (Data[2,i]=2)) or ((Data[0,i]=2) and (Data[1,i]=2) and (Data[2,i]=2)) or ((Data[0, i]=2) and (Data[1, i]=0) and (Data[2, i]=2)) then
        begin
@@ -230,6 +234,7 @@ for I := 0 to 2 do
    var value :integer;
    begin
    value:=3;
+   //ѕроверка по 1 диагонали и присваивание соответствующей оценки
       if ((Data[0, 0]=2) and (Data[1,1]=2) and (Data[2,2]=0)) or ((Data[0, 0]=0) and (Data[1,1]=2) and (Data[2,2]=2)) or ((Data[0,0]=2) and (Data[1,1]=2) and (Data[2,2]=2)) or ((Data[0, 0]=2) and (Data[1, 1]=0) and (Data[2, 2]=2)) then
        begin
 
@@ -266,6 +271,8 @@ function DiagonalTesting_2(Data:TData):integer;
 var value :integer;
    begin
    value:=3;
+   //ѕроверка по 2 диагонали и присваивание соответствующей оценки
+
       if ((Data[2, 0]=2) and (Data[1,1]=2) and (Data[0,2]=0)) or ((Data[2, 0]=0) and (Data[1,1]=2) and (Data[0,2]=2)) or ((Data[2,0]=2) and (Data[1,1]=2) and (Data[0,2]=2))or ((Data[2, 0]=2) and (Data[1, 1]=0) and (Data[0, 2]=2)) then
        begin
 
@@ -304,6 +311,8 @@ UpToDown:=VerticalTesting(Data0);
 LeftToRight:=HorizontalTesting(Data0);
 diagonal1:=DiagonalTesting_1(Data0);
 diagonal2:=DiagonalTesting_2(Data0);
+
+//—равниваем значени€ по вертикали горизонтали и диагонал€м и выбираем большее
 
 if (UpToDown>=LeftToRight) and (((UpToDown>=diagonal1) and (diagonal1>=diagonal2)) or ((UpToDown>=diagonal2) and (diagonal1<=diagonal2))) then
    result:=UpToDown else
@@ -373,7 +382,7 @@ function Generation(Node:pNode; cross,toe:integer):TData;
 var value, j:integer;
  begin
    value:=0;
-   //new(Node);
+
    randomize;
    value:=random(length(Node^.CoordinatesEmptyField));
 
@@ -465,6 +474,7 @@ var
 begin
 max:=0;
 
+  //¬ыбор наибольшей оценки и состо€ни€
   for I := 0 to Root^.CountChild-1 do
       if max<Root^.Links[i]^.Key then
       begin
@@ -472,6 +482,7 @@ max:=0;
         value:=Root^.Links[i]^.Data;
       end;
 
+   //≈сли состо€ние игры проигрышное, то ищем состо€ние ничьей
       if Root^.Key=1 then
         begin
           for I := 0 to Root^.CountChild-1 do

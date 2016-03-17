@@ -39,7 +39,7 @@ begin
    if Edit1.Text<>'' then
     begin
     form1.NamePl:=Edit1.Text;
-    assignfile(f,'resource/settings.txt');
+    assignfile(f,'settings.txt');
     rewrite(f);
     writeln(f, edit1.Text);
     writeln(f, colorbox1.Selected);

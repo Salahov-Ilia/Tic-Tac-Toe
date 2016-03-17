@@ -1,12 +1,7 @@
 unit GameEngine;
 
 interface
-uses Tree,  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics;
-
-
-function GetCross:TBitmap;stdcall;external 'source.dll';
-function GetToe:TBitmap;stdcall;external 'source.dll';
-function GetNil:TBitmap;stdcall;external 'source.dll';
+uses Tree,  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, resource;
 
 
 type

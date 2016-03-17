@@ -7,7 +7,6 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, GameOver,
   Vcl.Menus, GameEngine;
 
-  function GetIco:TIcon;stdcall;external 'source.dll';
 
 type
   TForm1 = class(TForm)
